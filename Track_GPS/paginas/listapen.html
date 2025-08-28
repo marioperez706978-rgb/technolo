@@ -1,0 +1,132 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Usuario Personalizado</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+      .tabla-usuarios-pendientes {
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 1100px;
+        min-width: 700px;
+        width: 100%;
+      }
+      .tabla-usuarios-pendientes thead th {
+        background: #101d26 !important;
+        color: #fff !important;
+      }
+    </style>
+    </head>
+
+
+
+<body style="background-color: #d4d5d6;">
+   <nav class="navbar navbar-expand-lg navbar-light shadow-sm rounded-bottom" style="margin-bottom: 32px; background-color: #101d26;">
+      <div class="container-fluid align-items-center">
+        <a class="navbar-brand d-flex align-items-center" href="listau.html">
+          <img src="../assets/images/logo5.png" alt="Logo" width="50" height="50" class="d-inline-block align-text-top me-2">
+          <span class="d-flex flex-column lh-1">
+            <!--<span style="font-weight: bold; color: #ff6a2c; font-size: 1.5rem; letter-spacing: 2px;">TECHNOLOGY</span>
+            <span style="font-size: 1rem; color: #b3b3b3; margin-top: -2px;">for the world</span>
+          </span>-->
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" style="border-color: #fff;">
+              <span class="navbar-toggler-icon" style="filter: invert(1);"></span>
+            </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto align-items-center">
+           <li class="nav-item dropdown ms-2">
+              <a href="#" class="nav-link dropdown-toggle p-0" id="dropdownUsuario" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="display: flex; align-items: center;">
+                <img src="../assets/images/usu.png" alt="Usuario" width="48" height="48" style="border-radius:50%;object-fit:cover;">
+              </a>
+              <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownUsuario">
+                <li><a class="dropdown-item" href="#" id="configCuenta">Configurar cuenta</a></li>
+                <li><a class="dropdown-item" href="#" id="cerrarSesion">Cerrar sesión</a></li>
+              </ul>
+            </li>
+              
+          </ul>
+        </div>
+      </div>
+    </nav>
+    
+
+    <div class="container mt-5">
+
+    <div class="modal fade" id="modalConfirmarAceptar" tabindex="-1" aria-labelledby="modalConfirmarAceptarLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="modalConfirmarAceptarLabel">Confirmar acción</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+          </div>
+          <div class="modal-body text-center">
+            ¿Estás seguro de aceptar este usuario?
+          </div>
+          <div class="modal-footer justify-content-center">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+            <button type="button" class="btn btn-success" id="btnConfirmarAceptar">Aceptar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+ 
+    <div class="modal fade" id="modalConfirmarRechazar" tabindex="-1" aria-labelledby="modalConfirmarRechazarLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="modalConfirmarRechazarLabel">Confirmar rechazo</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+          </div>
+          <div class="modal-body text-center">
+            ¿Estás seguro de rechazar este usuario?
+          </div>
+          <div class="modal-footer justify-content-center">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+            <button type="button" class="btn btn-danger" id="btnConfirmarRechazar">Rechazar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div id="toastNoti" class="toast align-items-center text-white bg-success border-0 position-fixed top-50 start-50 translate-middle" role="alert" aria-live="assertive" aria-atomic="true" style="z-index: 9999; min-width: 300px; display: none;">
+      <div class="d-flex">
+        <div class="toast-body w-100 text-center" id="toastNotiMsg">
+          Usuario aceptado
+        </div>
+        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Cerrar"></button>
+      </div>
+    </div>
+   
+      <h3 class="mb-4 text-center">Lista de usuarios pendientes</h3>
+      <div class="table-responsive">
+        <table class="table table-bordered tabla-usuarios-pendientes">
+          <thead>
+            <tr>
+              <th>Nombre</th>
+              <th>Apellido</th>
+              <th>Cédula</th>
+              <th>Teléfono</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody id="listaUsuarios">
+          </tbody>
+        </table>
+      </div>
+      <nav>
+        <ul class="pagination justify-content-center" id="pagination"></ul>
+      </nav>
+    </div>
+    <script src="../assets/js/verificacession.js"></script>
+    <script src="../assets/js/cerrar.js"></script>
+     <script src="../assets/js/oplogin.js"></script>
+     <script src="../assets/js/listarusup.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
